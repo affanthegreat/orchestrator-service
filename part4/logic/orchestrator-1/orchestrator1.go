@@ -64,7 +64,8 @@ func (s *server) GetUserByName(ctx context.Context, name *p.SearchQuery) (*p.Sta
 		}
 		log.Printf("Connection sucessful to second orchestrator")
 		if r != nil {
-			return &p.Status_One{Code: 200}, nil
+
+			return &p.Status_One{Code: 200, Name: r.Name, Class: r.Class, Roll: r.Roll}, nil
 		}
 	} else {
 		return nil, errors.New("User does not exist in given data. ")

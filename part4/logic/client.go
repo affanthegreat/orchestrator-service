@@ -29,6 +29,9 @@ func main() {
 		if response, err := client.GetUserByName(ctx, req); err == nil {
 			ctx.JSON(http.StatusOK, gin.H{
 				"result": fmt.Sprint(response.Code),
+				"name":   fmt.Sprint(response.Name),
+				"class":  fmt.Sprint(response.Class),
+				"roll":   fmt.Sprint(response.Roll),
 			})
 		} else {
 			fmt.Println(searchquery)

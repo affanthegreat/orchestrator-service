@@ -9,11 +9,7 @@ message ValidUserName{
 
 message Status_two{
     int64 status_code = 1;
-    string name = 2;
-    string class = 3;
-    int64 roll = 4;
 }
-
 service StatusUpdater{
     rpc GetUser(ValidUserName) returns (Status_two);
 }
