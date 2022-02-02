@@ -7,7 +7,6 @@ message User{
     string class = 2;
     int64 roll = 3;
 }
-
 message SearchQuery{
     string query = 1;
 }

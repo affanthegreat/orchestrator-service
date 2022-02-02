@@ -1,13 +1,15 @@
 syntax = "proto3";
-package getuserbyname;
+package proto;
 option go_package = "valno.com/proto";
 message SearchQuery{
     string query = 1;
 }
-message Status_One{
-    int64 code = 1;
+message User{
+    string name = 1;
+    string class = 2;
+    int64 roll = 3;
 }
-service AddService{
-    rpc GetUserByName(SearchQuery) returns (Status_One);
 
+service AddService{
+    rpc GetUserByName(SearchQuery) returns (User);
 }
