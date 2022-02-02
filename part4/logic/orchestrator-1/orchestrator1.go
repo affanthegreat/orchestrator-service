@@ -60,7 +60,8 @@ func (s *server) GetUserByName(ctx context.Context, name *p.SearchQuery) (*p.Sta
 		defer cancel()
 		r, err := client.GetUser(ctx, &q.ValidUserName{Query: name.Query, Statuscode: "ok"})
 		if err != nil {
-			log.Fatalf("Error at second Orcestration: %v", err)
+			log.Printf("Error at second Orcestration: %v", err)
+			return nil, err
 		}
 		log.Printf("Connection sucessful to second orchestrator")
 		if r != nil {

@@ -43,7 +43,8 @@ func (s *server) GetUser(ctx context.Context, name *p.ValidUserName) (*p.StatusT
 		req := &q.SearchQuery{Query: name.Query}
 		r, err := client.GetMockUserData(ctx, req)
 		if err != nil {
-			log.Fatalf("Error at second Orcestration: %v", err)
+			log.Printf("Error at second Orcestration: %v", err)
+			return nil, err
 		}
 		if r != nil {
 			log.Printf("Connection sucessful to second orchestrator")
