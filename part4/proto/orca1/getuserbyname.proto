@@ -6,7 +6,11 @@ message SearchQuery{
 }
 message Status_One{
     int64 code = 1;
+    string name = 2;
+    string class = 3;
+    int64 roll = 4;
 }
+
 service AddService{
     rpc GetUserByName(SearchQuery) returns (Status_One);
 

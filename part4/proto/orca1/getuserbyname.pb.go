@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.27.1
 // 	protoc        v3.19.4
-// source: proto/getuserbyname.proto
+// source: orca1/getuserbyname.proto
 
 package proto
 
@@ -31,7 +31,7 @@ type SearchQuery struct {
 func (x *SearchQuery) Reset() {
 	*x = SearchQuery{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_getuserbyname_proto_msgTypes[0]
+		mi := &file_orca1_getuserbyname_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -44,7 +44,7 @@ func (x *SearchQuery) String() string {
 func (*SearchQuery) ProtoMessage() {}
 
 func (x *SearchQuery) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_getuserbyname_proto_msgTypes[0]
+	mi := &file_orca1_getuserbyname_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,7 +57,7 @@ func (x *SearchQuery) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SearchQuery.ProtoReflect.Descriptor instead.
 func (*SearchQuery) Descriptor() ([]byte, []int) {
-	return file_proto_getuserbyname_proto_rawDescGZIP(), []int{0}
+	return file_orca1_getuserbyname_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *SearchQuery) GetQuery() string {
@@ -72,13 +72,16 @@ type Status_One struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Code int64 `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty"`
+	Code  int64  `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty"`
+	Name  string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Class string `protobuf:"bytes,3,opt,name=class,proto3" json:"class,omitempty"`
+	Roll  int64  `protobuf:"varint,4,opt,name=roll,proto3" json:"roll,omitempty"`
 }
 
 func (x *Status_One) Reset() {
 	*x = Status_One{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_getuserbyname_proto_msgTypes[1]
+		mi := &file_orca1_getuserbyname_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -91,7 +94,7 @@ func (x *Status_One) String() string {
 func (*Status_One) ProtoMessage() {}
 
 func (x *Status_One) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_getuserbyname_proto_msgTypes[1]
+	mi := &file_orca1_getuserbyname_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -104,7 +107,7 @@ func (x *Status_One) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Status_One.ProtoReflect.Descriptor instead.
 func (*Status_One) Descriptor() ([]byte, []int) {
-	return file_proto_getuserbyname_proto_rawDescGZIP(), []int{1}
+	return file_orca1_getuserbyname_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Status_One) GetCode() int64 {
@@ -114,44 +117,68 @@ func (x *Status_One) GetCode() int64 {
 	return 0
 }
 
-var File_proto_getuserbyname_proto protoreflect.FileDescriptor
+func (x *Status_One) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
 
-var file_proto_getuserbyname_proto_rawDesc = []byte{
-	0x0a, 0x19, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x65, 0x74, 0x75, 0x73, 0x65, 0x72, 0x62,
+func (x *Status_One) GetClass() string {
+	if x != nil {
+		return x.Class
+	}
+	return ""
+}
+
+func (x *Status_One) GetRoll() int64 {
+	if x != nil {
+		return x.Roll
+	}
+	return 0
+}
+
+var File_orca1_getuserbyname_proto protoreflect.FileDescriptor
+
+var file_orca1_getuserbyname_proto_rawDesc = []byte{
+	0x0a, 0x19, 0x6f, 0x72, 0x63, 0x61, 0x31, 0x2f, 0x67, 0x65, 0x74, 0x75, 0x73, 0x65, 0x72, 0x62,
 	0x79, 0x6e, 0x61, 0x6d, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x0d, 0x67, 0x65, 0x74,
 	0x75, 0x73, 0x65, 0x72, 0x62, 0x79, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x23, 0x0a, 0x0b, 0x53, 0x65,
 	0x61, 0x72, 0x63, 0x68, 0x51, 0x75, 0x65, 0x72, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x71, 0x75, 0x65,
 	0x72, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x71, 0x75, 0x65, 0x72, 0x79, 0x22,
-	0x20, 0x0a, 0x0a, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x5f, 0x4f, 0x6e, 0x65, 0x12, 0x12, 0x0a,
+	0x5e, 0x0a, 0x0a, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x5f, 0x4f, 0x6e, 0x65, 0x12, 0x12, 0x0a,
 	0x04, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x63, 0x6f, 0x64,
-	0x65, 0x32, 0x54, 0x0a, 0x0a, 0x41, 0x64, 0x64, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12,
-	0x46, 0x0a, 0x0d, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x42, 0x79, 0x4e, 0x61, 0x6d, 0x65,
-	0x12, 0x1a, 0x2e, 0x67, 0x65, 0x74, 0x75, 0x73, 0x65, 0x72, 0x62, 0x79, 0x6e, 0x61, 0x6d, 0x65,
-	0x2e, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x51, 0x75, 0x65, 0x72, 0x79, 0x1a, 0x19, 0x2e, 0x67,
-	0x65, 0x74, 0x75, 0x73, 0x65, 0x72, 0x62, 0x79, 0x6e, 0x61, 0x6d, 0x65, 0x2e, 0x53, 0x74, 0x61,
-	0x74, 0x75, 0x73, 0x5f, 0x4f, 0x6e, 0x65, 0x42, 0x11, 0x5a, 0x0f, 0x76, 0x61, 0x6c, 0x6e, 0x6f,
-	0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x63, 0x6c, 0x61, 0x73, 0x73, 0x18, 0x03,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x63, 0x6c, 0x61, 0x73, 0x73, 0x12, 0x12, 0x0a, 0x04, 0x72,
+	0x6f, 0x6c, 0x6c, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x72, 0x6f, 0x6c, 0x6c, 0x32,
+	0x54, 0x0a, 0x0a, 0x41, 0x64, 0x64, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x46, 0x0a,
+	0x0d, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x42, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1a,
+	0x2e, 0x67, 0x65, 0x74, 0x75, 0x73, 0x65, 0x72, 0x62, 0x79, 0x6e, 0x61, 0x6d, 0x65, 0x2e, 0x53,
+	0x65, 0x61, 0x72, 0x63, 0x68, 0x51, 0x75, 0x65, 0x72, 0x79, 0x1a, 0x19, 0x2e, 0x67, 0x65, 0x74,
+	0x75, 0x73, 0x65, 0x72, 0x62, 0x79, 0x6e, 0x61, 0x6d, 0x65, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x75,
+	0x73, 0x5f, 0x4f, 0x6e, 0x65, 0x42, 0x11, 0x5a, 0x0f, 0x76, 0x61, 0x6c, 0x6e, 0x6f, 0x2e, 0x63,
+	0x6f, 0x6d, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
-	file_proto_getuserbyname_proto_rawDescOnce sync.Once
-	file_proto_getuserbyname_proto_rawDescData = file_proto_getuserbyname_proto_rawDesc
+	file_orca1_getuserbyname_proto_rawDescOnce sync.Once
+	file_orca1_getuserbyname_proto_rawDescData = file_orca1_getuserbyname_proto_rawDesc
 )
 
-func file_proto_getuserbyname_proto_rawDescGZIP() []byte {
-	file_proto_getuserbyname_proto_rawDescOnce.Do(func() {
-		file_proto_getuserbyname_proto_rawDescData = protoimpl.X.CompressGZIP(file_proto_getuserbyname_proto_rawDescData)
+func file_orca1_getuserbyname_proto_rawDescGZIP() []byte {
+	file_orca1_getuserbyname_proto_rawDescOnce.Do(func() {
+		file_orca1_getuserbyname_proto_rawDescData = protoimpl.X.CompressGZIP(file_orca1_getuserbyname_proto_rawDescData)
 	})
-	return file_proto_getuserbyname_proto_rawDescData
+	return file_orca1_getuserbyname_proto_rawDescData
 }
 
-var file_proto_getuserbyname_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_proto_getuserbyname_proto_goTypes = []interface{}{
+var file_orca1_getuserbyname_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_orca1_getuserbyname_proto_goTypes = []interface{}{
 	(*SearchQuery)(nil), // 0: getuserbyname.SearchQuery
 	(*Status_One)(nil),  // 1: getuserbyname.Status_One
 }
-var file_proto_getuserbyname_proto_depIdxs = []int32{
+var file_orca1_getuserbyname_proto_depIdxs = []int32{
 	0, // 0: getuserbyname.AddService.GetUserByName:input_type -> getuserbyname.SearchQuery
 	1, // 1: getuserbyname.AddService.GetUserByName:output_type -> getuserbyname.Status_One
 	1, // [1:2] is the sub-list for method output_type
@@ -161,13 +188,13 @@ var file_proto_getuserbyname_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_proto_getuserbyname_proto_init() }
-func file_proto_getuserbyname_proto_init() {
-	if File_proto_getuserbyname_proto != nil {
+func init() { file_orca1_getuserbyname_proto_init() }
+func file_orca1_getuserbyname_proto_init() {
+	if File_orca1_getuserbyname_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_proto_getuserbyname_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_orca1_getuserbyname_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SearchQuery); i {
 			case 0:
 				return &v.state
@@ -179,7 +206,7 @@ func file_proto_getuserbyname_proto_init() {
 				return nil
 			}
 		}
-		file_proto_getuserbyname_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_orca1_getuserbyname_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Status_One); i {
 			case 0:
 				return &v.state
@@ -196,18 +223,18 @@ func file_proto_getuserbyname_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_proto_getuserbyname_proto_rawDesc,
+			RawDescriptor: file_orca1_getuserbyname_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_proto_getuserbyname_proto_goTypes,
-		DependencyIndexes: file_proto_getuserbyname_proto_depIdxs,
-		MessageInfos:      file_proto_getuserbyname_proto_msgTypes,
+		GoTypes:           file_orca1_getuserbyname_proto_goTypes,
+		DependencyIndexes: file_orca1_getuserbyname_proto_depIdxs,
+		MessageInfos:      file_orca1_getuserbyname_proto_msgTypes,
 	}.Build()
-	File_proto_getuserbyname_proto = out.File
-	file_proto_getuserbyname_proto_rawDesc = nil
-	file_proto_getuserbyname_proto_goTypes = nil
-	file_proto_getuserbyname_proto_depIdxs = nil
+	File_orca1_getuserbyname_proto = out.File
+	file_orca1_getuserbyname_proto_rawDesc = nil
+	file_orca1_getuserbyname_proto_goTypes = nil
+	file_orca1_getuserbyname_proto_depIdxs = nil
 }

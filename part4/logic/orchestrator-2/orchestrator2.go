@@ -47,7 +47,10 @@ func (s *server) GetUser(ctx context.Context, name *p.ValidUserName) (*p.StatusT
 		}
 		if r != nil {
 			log.Printf("Connection sucessful to second orchestrator")
-			return &p.StatusTwo{StatusCode: 200}, nil
+			log.Println(r.Class)
+			log.Println(r.Name)
+			log.Println(r.Roll)
+			return &p.StatusTwo{StatusCode: 200, Name: r.Name, Class: r.Class, Roll: r.Roll}, nil
 		}
 		return nil, errors.New("r is empty")
 	}

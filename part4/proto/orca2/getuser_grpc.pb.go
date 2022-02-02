@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.19.4
-// source: proto/getuser.proto
+// source: orca2/getuser.proto
 
 package proto3
 
@@ -101,5 +101,5 @@ var StatusUpdater_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "proto/getuser.proto",
+	Metadata: "orca2/getuser.proto",
 }
