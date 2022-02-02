@@ -1,0 +1,15 @@
+syntax = "proto3";
+package proto;
+option go_package = "/proto";
+message SearchQuery{
+    string query = 1;
+}
+message User{
+    string name = 1;
+    string class = 2;
+    int64 roll = 3;
+}
+
+service AddService{
+    rpc GetUserByName(SearchQuery) returns (User);
+}
