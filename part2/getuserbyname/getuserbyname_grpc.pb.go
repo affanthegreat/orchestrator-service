@@ -22,7 +22,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AddServiceClient interface {
-	GetUserByName(ctx context.Context, in *SearchQuery, opts ...grpc.CallOption) (*Status_One, error)
+	GetUserByName(ctx context.Context, in *SearchQuery, opts ...grpc.CallOption) (*User, error)
 }
 
 type addServiceClient struct {
@@ -33,9 +33,9 @@ func NewAddServiceClient(cc grpc.ClientConnInterface) AddServiceClient {
 	return &addServiceClient{cc}
 }
 
-func (c *addServiceClient) GetUserByName(ctx context.Context, in *SearchQuery, opts ...grpc.CallOption) (*Status_One, error) {
-	out := new(Status_One)
-	err := c.cc.Invoke(ctx, "/getuserbyname.AddService/GetUserByName", in, out, opts...)
+func (c *addServiceClient) GetUserByName(ctx context.Context, in *SearchQuery, opts ...grpc.CallOption) (*User, error) {
+	out := new(User)
+	err := c.cc.Invoke(ctx, "/proto.AddService/GetUserByName", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +46,7 @@ func (c *addServiceClient) GetUserByName(ctx context.Context, in *SearchQuery, o
 // All implementations must embed UnimplementedAddServiceServer
 // for forward compatibility
 type AddServiceServer interface {
-	GetUserByName(context.Context, *SearchQuery) (*Status_One, error)
+	GetUserByName(context.Context, *SearchQuery) (*User, error)
 	mustEmbedUnimplementedAddServiceServer()
 }
 
@@ -54,7 +54,7 @@ type AddServiceServer interface {
 type UnimplementedAddServiceServer struct {
 }
 
-func (UnimplementedAddServiceServer) GetUserByName(context.Context, *SearchQuery) (*Status_One, error) {
+func (UnimplementedAddServiceServer) GetUserByName(context.Context, *SearchQuery) (*User, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserByName not implemented")
 }
 func (UnimplementedAddServiceServer) mustEmbedUnimplementedAddServiceServer() {}
@@ -80,7 +80,7 @@ func _AddService_GetUserByName_Handler(srv interface{}, ctx context.Context, dec
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/getuserbyname.AddService/GetUserByName",
+		FullMethod: "/proto.AddService/GetUserByName",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AddServiceServer).GetUserByName(ctx, req.(*SearchQuery))
@@ -92,7 +92,7 @@ func _AddService_GetUserByName_Handler(srv interface{}, ctx context.Context, dec
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var AddService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "getuserbyname.AddService",
+	ServiceName: "proto.AddService",
 	HandlerType: (*AddServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
