@@ -16,7 +16,7 @@ var (
 )
 
 func main() {
-	conn, err := grpc.Dial("localhost:4040", grpc.WithInsecure())
+	conn, err := grpc.Dial("localhost:9000", grpc.WithInsecure())
 	if err != nil {
 		panic(err)
 	}
@@ -28,7 +28,7 @@ func main() {
 		req := &p.SearchQuery{Query: searchquery}
 		if response, err := client.GetUserByName(ctx, req); err == nil {
 			ctx.JSON(http.StatusOK, gin.H{
-				"result": fmt.Sprint(response.Name),
+				"result": fmt.Sprint(response.Code),
 			})
 		} else {
 			fmt.Println(searchquery)

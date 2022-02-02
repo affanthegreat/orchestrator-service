@@ -4,8 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	p "mockdata"
 	"net/http"
-	p "part3/proto"
 
 	"github.com/gin-gonic/gin"
 	"google.golang.org/grpc"
