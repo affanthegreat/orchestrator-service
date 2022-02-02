@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"errors"
-	"fmt"
 	"log"
 	"net"
 	p "part2/proto"
@@ -30,7 +29,5 @@ func main() {
 
 }
 func (s *server) GetUserByName(ctx context.Context, name *p.SearchQuery) (*p.User, error) {
-	a := name.Query
-	fmt.Print(a)
-	return nil, errors.New("not implemented yet." + name.Query + " will implement me")
+	return nil, errors.New("not implemented yet. " + name.Query + " will implement me")
 }
