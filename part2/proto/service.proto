@@ -1,6 +1,6 @@
 syntax = "proto3";
 package proto;
-option go_package = "/proto";
+option go_package = "valno.com/proto";
 message SearchQuery{
     string query = 1;
 }
