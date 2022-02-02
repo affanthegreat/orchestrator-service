@@ -3,9 +3,9 @@ package main
 import (
 	"context"
 	"errors"
+	p "getuserbyname"
 	"log"
 	"net"
-	p "part2/proto"
 
 	"google.golang.org/grpc"
 )

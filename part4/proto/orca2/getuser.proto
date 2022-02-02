@@ -1,0 +1,15 @@
+syntax = "proto3";
+package proto;
+option go_package = "valno.com/proto3";
+
+message ValidUserName{
+    string query = 1;
+    string statuscode = 2;
+}
+
+message Status_two{
+    int64 status_code = 1;
+}
+service StatusUpdater{
+    rpc GetUser(ValidUserName) returns (Status_two);
+}

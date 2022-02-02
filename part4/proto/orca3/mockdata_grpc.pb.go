@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.19.4
-// source: proto/service.proto
+// source: proto/mockdata.proto
 
 package proto
 
@@ -22,7 +22,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AddServiceClient interface {
-	GetUserByName(ctx context.Context, in *SearchQuery, opts ...grpc.CallOption) (*User, error)
+	GetMockUserData(ctx context.Context, in *SearchQuery, opts ...grpc.CallOption) (*User, error)
 }
 
 type addServiceClient struct {
@@ -33,9 +33,9 @@ func NewAddServiceClient(cc grpc.ClientConnInterface) AddServiceClient {
 	return &addServiceClient{cc}
 }
 
-func (c *addServiceClient) GetUserByName(ctx context.Context, in *SearchQuery, opts ...grpc.CallOption) (*User, error) {
+func (c *addServiceClient) GetMockUserData(ctx context.Context, in *SearchQuery, opts ...grpc.CallOption) (*User, error) {
 	out := new(User)
-	err := c.cc.Invoke(ctx, "/proto.AddService/GetUserByName", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/proto.AddService/GetMockUserData", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +46,7 @@ func (c *addServiceClient) GetUserByName(ctx context.Context, in *SearchQuery, o
 // All implementations must embed UnimplementedAddServiceServer
 // for forward compatibility
 type AddServiceServer interface {
-	GetUserByName(context.Context, *SearchQuery) (*User, error)
+	GetMockUserData(context.Context, *SearchQuery) (*User, error)
 	mustEmbedUnimplementedAddServiceServer()
 }
 
@@ -54,8 +54,8 @@ type AddServiceServer interface {
 type UnimplementedAddServiceServer struct {
 }
 
-func (UnimplementedAddServiceServer) GetUserByName(context.Context, *SearchQuery) (*User, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUserByName not implemented")
+func (UnimplementedAddServiceServer) GetMockUserData(context.Context, *SearchQuery) (*User, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMockUserData not implemented")
 }
 func (UnimplementedAddServiceServer) mustEmbedUnimplementedAddServiceServer() {}
 
@@ -70,20 +70,20 @@ func RegisterAddServiceServer(s grpc.ServiceRegistrar, srv AddServiceServer) {
 	s.RegisterService(&AddService_ServiceDesc, srv)
 }
 
-func _AddService_GetUserByName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AddService_GetMockUserData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SearchQuery)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AddServiceServer).GetUserByName(ctx, in)
+		return srv.(AddServiceServer).GetMockUserData(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/proto.AddService/GetUserByName",
+		FullMethod: "/proto.AddService/GetMockUserData",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AddServiceServer).GetUserByName(ctx, req.(*SearchQuery))
+		return srv.(AddServiceServer).GetMockUserData(ctx, req.(*SearchQuery))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -96,10 +96,10 @@ var AddService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*AddServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetUserByName",
-			Handler:    _AddService_GetUserByName_Handler,
+			MethodName: "GetMockUserData",
+			Handler:    _AddService_GetMockUserData_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "proto/service.proto",
+	Metadata: "proto/mockdata.proto",
 }

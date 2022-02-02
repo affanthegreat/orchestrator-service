@@ -1,15 +1,16 @@
 syntax = "proto3";
 package proto;
-option go_package = "valno.com/proto";
-message SearchQuery{
-    string query = 1;
-}
+option go_package = "proto/";
+
 message User{
     string name = 1;
     string class = 2;
     int64 roll = 3;
 }
 
+message SearchQuery{
+    string query = 1;
+}
 service AddService{
-    rpc GetUserByName(SearchQuery) returns (User);
+    rpc GetMockUserData(SearchQuery) returns (User);
 }
